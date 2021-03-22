@@ -43,9 +43,9 @@ public class CompromissoService {
 		return compromissoRepository.findById(id).get();
 	}
 	
-	//método para executar a consulta de compromissos por periodo de data
-	public List<Compromisso> findByDatas(Date dataMin, Date dataMax) throws Exception {
-		return compromissoRepository.findByDatas(dataMin, dataMax);
+	//método para executar a consulta de compromissos por periodo de data e usuário
+	public List<Compromisso> find(Integer idUsuario, Date dataMin, Date dataMax) throws Exception {
+		return compromissoRepository.find(idUsuario, dataMin, dataMax);
 	}
 	
 }

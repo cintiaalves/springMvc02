@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <jsp:useBean id="data" class="java.util.Date" />
 
 <fmt:formatDate var="dataAtual" value="${data}"
@@ -111,22 +113,22 @@
 		<form id="formEdicao" autocomplete="off">
 		
 			<!-- Campo oculto -->
-			<input type="hidden" name="idCompromisso" id="idCompromisso"/>
+			<form:input path="compromisso.idCompromisso" type="hidden" name="idCompromisso" id="idCompromisso"/>
 		
 			<div class="row">
 				<div class="col-md-6">
 					<label>Nome do Compromisso:</label>
-					<input type="text" name="nome" id="nome" class="form-control"/>
+					<form:input path="compromisso.nome" type="text" name="nome" id="nome" class="form-control"/>
 				</div>	
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-6">
 							<label>Data do Compromisso:</label>
-							<input type="date" name="dataCompromisso" id="dataCompromisso" class="form-control"/>
+							<form:input path="compromisso.dataCompromisso" type="date" name="dataCompromisso" id="dataCompromisso" class="form-control"/>
 						</div>
 						<div class="col-md-6">
 							<label>Hora do Compromisso:</label>
-							<input type="text" name="horaCompromisso" id="horaCompromisso" class="form-control"/>						
+							<form:input path="compromisso.horaCompromisso" type="text" name="horaCompromisso" id="horaCompromisso" class="form-control"/>						
 						</div>
 					</div>
 				</div>		
@@ -135,22 +137,22 @@
 			<div class="row mt-3">
 				<div class="col-md-3">
 					<label>Tipo do Compromisso</label>
-					<select name="tipo" id="tipo" class="form-select">
-						<option value="">Escolha uma opção</option>
-					</select>
+					<form:select path="compromisso.tipo" name="tipo" id="tipo" class="form-select">
+						<form:options items="${tipos}"/> 
+					</form:select>
 				</div>
 				<div class="col-md-3">
 					<label>Prioridade do Compromisso</label>
-					<select name="prioridade" id="prioridade" class="form-select">
-						<option value="">Escolha uma opção</option>
-					</select>
+					<form:select path="compromisso.prioridade" name="prioridade" id="prioridade" class="form-select">
+						<form:options items="${prioridades}"/>
+					</form:select>
 				</div>
 			</div>
 			
 			<div class="row mt-3">
 				<div class="col-md-12">
 					<label>Descrição do Compromisso</label>
-					<textarea name="descricao" id="descricao" class="form-control"></textarea>
+					<form:textarea path="compromisso.descricao" name="descricao" id="descricao" class="form-control"></form:textarea>
 				</div>
 			</div>
 			

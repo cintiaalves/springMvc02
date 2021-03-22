@@ -9,14 +9,16 @@ import org.springframework.data.repository.query.Param;
 
 import br.com.cotiinformatica.entities.Compromisso;
 
-public interface ICompromissoRepository extends CrudRepository<Compromisso, Integer>{
+public interface ICompromissoRepository extends CrudRepository<Compromisso, Integer> {
 	
 	/*
 	 * JPQL Java Persistence Query Language
 	 */
 
-	@Query("select c from Compromisso c where c.dataCompromisso between :dataMin and :dataMax")
-	List<Compromisso> findByDatas(@Param("dataMin") Date dataMin, @Param("dataMax") Date dataMax);
-	
-
+	@Query("select c from Compromisso c where c.usuario.idUsuario = :idUsuario and c.dataCompromisso between :dataMin and :dataMax")
+	List<Compromisso> find(
+			@Param("idUsuario") Integer idUsuario,
+			@Param("dataMin") Date dataMin,
+			@Param("dataMax") Date dataMax);
 }
+
